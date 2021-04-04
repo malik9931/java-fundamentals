@@ -3,8 +3,13 @@
  */
 package lab01;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class App {
-    
+    //pluralize Function
     public static String pluralize(String wor , int num)
     {
         if(num <= 1){
@@ -13,7 +18,31 @@ public class App {
             return wor+'s';
         }
     }
+    //Flipping Coins Function
+    public static void flipNHeads(int n){
+        int headsCounter = 0;
+        int whileCounter = 0;
+        while (headsCounter != n){
+            double randomNumber = Math.random();
+//            System.out.println(randomNumber);
+            if(randomNumber < 0.5d){
+                System.out.println("tails");
+            }else {
+                System.out.println("heads");
+                headsCounter++;
+            }
+            whileCounter++;
+        }
+        System.out.println("It took "+ whileCounter +" flips to flip "+ n +" heads in a row.");
+    }
 
+    //Command Line Clock Function
+    public static void clockFun(){
+        LocalDateTime now = LocalDateTime.now();
+        String time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.println(time);
+
+    }
 
     public static void main(String[] args) {
 
@@ -25,5 +54,18 @@ public class App {
 
         int turtleCount = 0;
         System.out.println("I own " + turtleCount + " " + pluralize("turtle", turtleCount) + ".");
+
+        flipNHeads(4);
+
+        Timer timer = new Timer();
+        timer.schedule(new clockFun(), 0, 1000);
+    }
+
+    private static class clockFun extends TimerTask {
+        public void run() {
+            LocalDateTime now = LocalDateTime.now();
+            String time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            System.out.println(time);
+        }
     }
 }
