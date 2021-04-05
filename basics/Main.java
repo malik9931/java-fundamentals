@@ -12,7 +12,7 @@ public class Main {
     //pluralize Function
     public static String pluralize(String wor , int num)
     {
-        if(num <= 1){
+        if(num == 1){
             return wor;
         }else {
             return wor+'s';
@@ -27,6 +27,7 @@ public class Main {
 //            System.out.println(randomNumber);
             if(randomNumber < 0.5d){
                 System.out.println("tails");
+                headsCounter = 0;
             }else {
                 System.out.println("heads");
                 headsCounter++;
