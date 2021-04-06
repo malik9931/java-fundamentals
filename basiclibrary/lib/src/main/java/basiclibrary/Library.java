@@ -56,24 +56,23 @@ public class Library {
     }
 
 // Arrays of Arrays
-    public static ArrayList<Double> avgArrays (int [][] arr){
+    public static int [] avgArrays (int [][] arr){
         ArrayList<Double> avgsOfArr = new ArrayList<>(); // Create an ArrayList object
+        int [] leastAvgArr = arr[0];
+        int indexOfLeastAvgArr = 0;
+        Double leastAvg = Arrays.stream(arr[0]).average().getAsDouble();
 
         for (int i = 0 ; i<arr.length ; i++){
             Double avg = Arrays.stream(arr[i]).average().getAsDouble();
-//            avg.getAsDouble();
-            avgsOfArr.add(avg);
-//            avgsOfArr.getAsDouble();
-        }
-        double leastValue = avgsOfArr.get(0);
-        for (double num : avgsOfArr){
-            if(num < leastValue){
-                leastValue = num;
+            if(avg<leastAvg){
+                leastAvg=avg;
+                indexOfLeastAvgArr = i;
             }
+
         }
 
-//        System.out.println(leastValue);
-        return avgsOfArr;
+
+        return arr[indexOfLeastAvgArr];
 
     }
 
