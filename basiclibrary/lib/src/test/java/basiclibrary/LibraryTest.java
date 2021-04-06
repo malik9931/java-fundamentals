@@ -45,24 +45,25 @@ public class LibraryTest {
         double testAvgArr1 = classUnderTest.avgCalculator(test1);
         double testAvgArr2 = classUnderTest.avgCalculator(test2);
         System.out.println(testAvgArr2);
-        assertEquals("The testing of the first array, the avg is equal to ", 3.0, testAvgArr1);
-        assertEquals("The testing of the second array, the avg is equal to ",1.5,testAvgArr2);
+        assertEquals("The testing of the first array, the avg is equal to ", 3.0, testAvgArr1,0);
+        assertEquals("The testing of the second array, the avg is equal to ",1.5,testAvgArr2,0);
 
     }
 
     @Test public void testAvgArrays(){
         int[][] testArr = {
                 {66, 64, 58, 65, 71, 57, 60},
-                {57, 65, 65, 70, 72, 65, 51},
+                { 1, 72, 65, 1},
                 {55, 54, 60, 53, 59, 57, 61},
                 {65, 56, 55, 52, 55, 62, 57}
 
         };
+//        double[] expectTest = {63.0, 63.57142857142857, 57.0, 57.42857142857143};
         Library classUnderTest = new Library();
-        ArrayList<Double> testAvgArrs = classUnderTest.avgArrays(testArr);
-        System.out.println(testAvgArrs);
-        assertEquals("The testing of the first array, the avg is equal to ", 3, testAvgArrs);
-        assertEquals(57.0,testAvgArrs, 0);
+        int[] testAvgArrs = classUnderTest.avgArrays(testArr);
+        System.out.println(testArr[1]);
+        assertEquals("The testing of the first array, the avg is equal to ", testArr[1], testAvgArrs);
+//        assertEquals(57.0,testAvgArrs, 0);
 
 
     }
