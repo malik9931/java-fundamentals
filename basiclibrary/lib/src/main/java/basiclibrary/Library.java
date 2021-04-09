@@ -3,10 +3,7 @@
  */
 package basiclibrary;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.OptionalDouble;
-import java.util.Random;
+import java.util.*;
 
 public class Library {
     public boolean someLibraryMethod() {
@@ -76,12 +73,78 @@ public class Library {
 
     }
 
+    public static String analyzWeather(int [][] arr){
+        String analyzingResult="" ;
+        Set<Integer> integersSet = new HashSet<Integer>();
+        int max = arr[0][0];
+        int min = arr[0][0];
+
+        for(int[] s: arr ){
+            for (int item : s){
+                if(item < min && item != min){
+
+                    min = item;
+                }
+                if (item>max && item != max){
+                    max = item;
+                }
+            }
+        }
+
+        for(int[] s: arr ){
+            for (int item : s){
+                if(item != min && item != max){
+            integersSet.add(item); }
+            }
+        }
+
+        System.out.println("High: "+max);
+        System.out.println("Low: "+min);
+        ArrayList<String> notContain = new ArrayList<String>();
+        int counter = min+1;
+        for (int i = counter; counter < max; i++) {
+//            System.out.println(min);
+            if (!integersSet.contains(i)){
+                System.out.println("Never saw temperature: "+i);
+                notContain.add(String.valueOf(i));
+            }
+            counter++;
+        }
+        analyzingResult += "the max is: "+max+", the min is: "+min+", Never saw temperature: "+notContain;
+        return analyzingResult;
+    }
+
+    public static String tally(List<String> votes){
+        HashMap<String,Integer> lsitOfNames = new HashMap<String,Integer>();
+
+        for(String item: votes){
+            lsitOfNames.put(item,0);
+        }
+
+        for(String item: votes){
+
+            lsitOfNames.put(item,lsitOfNames.get(item)+1);
+        }
+        System.out.println(lsitOfNames);
+        String highVoteName = "Name";
+        int maxVotNum = 0;
+        for (String i : lsitOfNames.keySet()) {
+            System.out.println("key: " + i + " value: " + lsitOfNames.get(i));
+            if(lsitOfNames.get(i)>maxVotNum){
+                maxVotNum= lsitOfNames.get(i);
+                highVoteName = i;
+            }
+        }
+        System.out.println(highVoteName);
+    return highVoteName;
+    }
+
     public static void main(String[] args) {
         int [] test = {1,4,5,9,9,6};
-        System.out.println(containsDuplicates(test));
-        System.out.println(avgCalculator(test));
+//        System.out.println(containsDuplicates(test));
+//        System.out.println(avgCalculator(test));
 
-        roll(4);
+//        roll(4);
 
         int[][] weeklyMonthTemperatures = {
                 {66, 64, 58, 65, 71, 57, 60},
@@ -91,7 +154,27 @@ public class Library {
 
         };
 
-        System.out.println(avgArrays(weeklyMonthTemperatures));
+//        System.out.println(avgArrays(weeklyMonthTemperatures));
+
+        System.out.println(analyzWeather(weeklyMonthTemperatures));
+
+        analyzWeather(weeklyMonthTemperatures);
+
+        //Tallying Election
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        String winner = tally(votes);
+        System.out.println(winner + " received the most votes!");
+
 
     }
 //    public ArrayList

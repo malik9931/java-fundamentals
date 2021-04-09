@@ -6,7 +6,9 @@ package basiclibrary;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import static basiclibrary.Library.tally;
 import static org.junit.Assert.*;
 
 public class LibraryTest {
@@ -65,6 +67,39 @@ public class LibraryTest {
         assertEquals("The testing of the first array, the avg is equal to ", testArr[1], testAvgArrs);
 //        assertEquals(57.0,testAvgArrs, 0);
 
+
+    }
+    @Test public void testAnalyzWeather(){
+        int[][] testArr = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        String[] expectedTest= {"63", "67", "68", "69"};
+
+        Library classUnderTest = new Library();
+        String testAnalyzWeatherArr = classUnderTest.analyzWeather(testArr);
+
+        assertEquals("the max is: "+72+", the min is: "+51+", Never saw temperature: [63, 67, 68, 69]",testAnalyzWeatherArr);
+
+
+
+    }
+
+    @Test public void testTally(){
+        List<String> votes = new ArrayList<>();
+        votes.add("Malek");
+        votes.add("Malek");
+        votes.add("Moh");
+        votes.add("Malek");
+        votes.add("Moh");
+        votes.add("Ahmad");
+
+        Library classUnderTest = new Library();
+        String testVotes = classUnderTest.tally(votes);
+
+        assertEquals("The testing of the tally Function, the high votes expected is for ", "Malek", testVotes);
 
     }
 }
