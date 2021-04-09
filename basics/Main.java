@@ -13,9 +13,10 @@ public class Main {
     public static String pluralize(String wor , int num)
     {
         if(num == 1){
-            return wor;
+            
+            return "I own " + num + " " + wor + ".";
         }else {
-            return wor+'s';
+            return "I own " + num + " " +wor+'s';
         }
     }
     //Flipping Coins Function
@@ -48,15 +49,15 @@ public class Main {
     public static void main(String[] args) {
 
         int dogCount = 1;
-        System.out.println("I own " + dogCount + " " + pluralize("dog", dogCount) + ".");
+        System.out.println(pluralize("dog", dogCount));
 
         int catCount = 2;
-        System.out.println("I own " + catCount + " " + pluralize("cat", catCount) + ".");
+        System.out.println(pluralize("cat", catCount));
 
         int turtleCount = 0;
-        System.out.println("I own " + turtleCount + " " + pluralize("turtle", turtleCount) + ".");
+        System.out.println(pluralize("turtle", turtleCount));
 
-        flipNHeads(4);
+        flipNHeads(6);
 
         Timer timer = new Timer();
         timer.schedule(new clockFun(), 0, 1000);
