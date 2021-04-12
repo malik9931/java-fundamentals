@@ -56,3 +56,20 @@ more than 5 hrs
 
 ### Challenging:
 I was facing some of challenging in JavaScript Linter part
+
+------------------------------------------------------------
+
+# Inheritance (Lab 6 and Lab 7)
+### Overview
+During these labs I was creating an inheritance library which is aim to creating a: Restaurants, Shops and Theaters and do a review on each of them.
+
+Testing every constructor on each class and creating an interface to add the review for all of these places.
+
+### Time Spent:
+more than 5 hrs
+
+### Challenging:
+I was facing some of challenging in Connicting between Classes 
+
+#### Testing
+[Testing The Labs](/inheritance/lib/src/test)
