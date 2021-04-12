@@ -10,21 +10,12 @@ public class Library {
 
     public static void main(String[] args) {
         try {
-        Restaurant malek = new Restaurant("Malek",5,10);
-        System.out.println(malek.toString());
-            malek.addReviewAndRating("goood foood","mike", 4);
-            malek.addReviewAndRating("bad food","johne", 1);
-            malek.addReviewAndRating("bad fdsood","s", 5);
-//        Review test = new Review("jjjj","aaaa",2);
 
-            System.out.println(malek.reviews);
-            System.out.println(malek);
-//            System.out.println(test);
 
-//            firstRe.addReviewAndRating()
 
         }catch (Exception ex){
             System.out.println("Error: "+ex);
         }
+
     }
 }
