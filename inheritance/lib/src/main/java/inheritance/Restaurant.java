@@ -4,10 +4,10 @@ import java.util.LinkedList;
 
 public class Restaurant {
     String name;
+    double starsNum;
     double starRating;
     int priceCat;
-    LinkedList<Review> reviews;
-
+    public LinkedList<Review> reviews;
 
 
     public Restaurant(String name , double starsNum ,int priceCat ){
@@ -19,25 +19,26 @@ public class Restaurant {
         }
 //        this.setStarsNum(starsNum);
         this.setPriceCat(priceCat);
-        this.starRating = starRating;
+//        this.starRating = starRating;
         this.reviews = new LinkedList<>();
 
     }
 
     //----------------- Methods ---------------------------
-    public void addReviewAndRating( String body ,String author ,double stars){
+
+    public void addReview(Review review){
+        // add review to the end of the list in the constructor
+        this.reviews.add(review);
+
+    }
+
+    public void addReviewAndRating(String body ,String author ,double stars) {
         //create a new instance of Review Class
         Review newReview = new Review(body,author,stars);
         // add the new review to the list, using the addReview method
         addReview(newReview);
         // update the restaurant review with getStarRating method.
         getStarsRating();
-    }
-
-    public void addReview(Review review){
-        // add review to the end of the list in the constructor
-        this.reviews.add(review);
-
     }
 
 //------------------------- Getter and Setter ------------------------
@@ -50,25 +51,25 @@ public class Restaurant {
         this.name = name;
     }
     //Stars
-    public void getStarsRating() {
+    public double getStarsRating() {
         int starSum = 0;
         // start at the head of the restaurant list and add up the stars
         for(Review r : this.reviews) {
-            starSum += r.starRating;
+            starSum += r.numOfStars;
         }
         // get the average rating: divide the number of stars by the number of reviews, and update constructor
         this.starRating = starSum / this.reviews.size();
-        return starsNum;
+        return starRating;
     }
 
     public void setStarsNum(double starsNum) {
             this.starsNum = starsNum;
     }
-    //Price Category
-
-    public int getPriceCat() {
-        return priceCat;
-    }
+//    //Price Category
+//
+//    public int getPriceCat() {
+//        return priceCat;
+//    }
 
     public void setPriceCat(int priceCat) {
         this.priceCat = priceCat;
@@ -80,8 +81,9 @@ public class Restaurant {
     public String toString() {
         return "Restaurant{" +
                 "name='" + name + '\'' +
-                ", starsNum=" + starsNum +
+                ", starsRate=" + starRating +
                 ", priceCat=" + priceCat +
                 '}';
     }
+
 }
