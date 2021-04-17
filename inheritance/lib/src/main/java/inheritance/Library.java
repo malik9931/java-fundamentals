@@ -10,6 +10,7 @@ public class Library {
 
     public static void main(String[] args) {
         try {
+
         Restaurant malek = new Restaurant("Malek",10);
         System.out.println(malek.toString());
             Review rev1 = new Review("goood foood","mike", 4);
@@ -28,8 +29,10 @@ public class Library {
             System.out.println(malek);
 
 
+
         }catch (Exception ex){
             System.out.println("Error: "+ex);
         }
+
     }
 }
