@@ -3,19 +3,18 @@ package inheritance;
 import java.util.LinkedList;
 
 public class Review{
-    String body;
-    String author;
-    double numOfStars;
+
+    private String body;
+    private String author;
+    private double numOfStars;
     public String filmName;
 
 
     public Review(String body, String author,double numOfStars ) {
         this.body = body;
         this.author = author;
-//        this.numOfStars = numOfStars;
 
         if(numOfStars >=0 && numOfStars<= 5){
-//            this.setStarsNum(starsNum);
             this.numOfStars = numOfStars;
 
         }else {
@@ -23,6 +22,7 @@ public class Review{
         }
 
     }
+
 
     public Review(String body, String author,double numOfStars, String movieName ) {
         this.body = body;
@@ -38,19 +38,38 @@ public class Review{
         }
 
     }
-//
-//    public void addNewReview(){
-//        rev
-//
-//    }
 
 
-//----------------------- To String Method ------------------------------------
-//    public String toStringfilm(){
-//        return String.format("%s gave %s stars, and gave the following review %s for the particular %s",this.author,this.numOfStars,this.body,this.filmName);
-////        return this;
-//
-//    }
+//------------------Getter and Setter-------------------------------------
+
+
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public double getNumOfStars() {
+        return numOfStars;
+    }
+
+    public void setNumOfStars(double numOfStars) {
+        this.numOfStars = numOfStars;
+    }
+
+    //----------------------- To String Method ------------------------------------
+
     @Override
     public String toString() {
         String result = "";

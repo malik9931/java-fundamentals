@@ -1,45 +1,38 @@
 package inheritance;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Restaurant {
-    String name;
-    double starsNum;
-    double starRating;
-    int priceCat;
-    public LinkedList<Review> reviews;
+    private String name;
+    private double starRating;
+    private int priceCat;
+    public ArrayList<Review> reviews = new ArrayList<>();;
 
 
-    public Restaurant(String name , double starsNum ,int priceCat ){
+    public Restaurant(String name  , int priceCat ){
         this.setName(name);
-        if(starsNum >=0.0 && starsNum<= 5.0){
-            this.setStarsNum(starsNum);
-        }else {
-            throw new IllegalArgumentException("Error starsNumber should be between 0 and 5");
-        }
-//        this.setStarsNum(starsNum);
         this.setPriceCat(priceCat);
-//        this.starRating = starRating;
-        this.reviews = new LinkedList<>();
 
     }
 
     //----------------- Methods ---------------------------
 
     public void addReview(Review review){
+        //To make sure the you are adding new review and not a duplicate.
+        for (Review revInList:reviews){
+            if(review.getBody() == revInList.getBody()){
+                System.out.println("You made this Review before, Thank U");
+                return;
+            }
+
+        }
         // add review to the end of the list in the constructor
         this.reviews.add(review);
-
-    }
-
-    public void addReviewAndRating(String body ,String author ,double stars) {
-        //create a new instance of Review Class
-        Review newReview = new Review(body,author,stars);
-        // add the new review to the list, using the addReview method
-        addReview(newReview);
         // update the restaurant review with getStarRating method.
         getStarsRating();
+
     }
+
 
 //------------------------- Getter and Setter ------------------------
     // Name
@@ -55,21 +48,13 @@ public class Restaurant {
         int starSum = 0;
         // start at the head of the restaurant list and add up the stars
         for(Review r : this.reviews) {
-            starSum += r.numOfStars;
+            starSum += r.getNumOfStars();
         }
         // get the average rating: divide the number of stars by the number of reviews, and update constructor
         this.starRating = starSum / this.reviews.size();
         return starRating;
     }
 
-    public void setStarsNum(double starsNum) {
-            this.starsNum = starsNum;
-    }
-//    //Price Category
-//
-//    public int getPriceCat() {
-//        return priceCat;
-//    }
 
     public void setPriceCat(int priceCat) {
         this.priceCat = priceCat;

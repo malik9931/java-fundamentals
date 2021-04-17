@@ -8,7 +8,24 @@ import static org.junit.Assert.*;
 
 public class LibraryTest {
     @Test public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+
+
+                Restaurant malek = new Restaurant("Malek",10);
+                System.out.println(malek.toString());
+                Review rev1 = new Review("goood foood","mike", 4);
+                Review rev11 = new Review("goood foood","mike", 4);
+
+                Review rev2 = new Review("bad food","johne", 1);
+                Review rev3 = new Review("bad fdsood","s", 5);
+                Review rev4 = new Review("Healloe Nice food","malek",4);
+                malek.addReview(rev1);
+                malek.addReview(rev11);
+                malek.addReview(rev2);
+
+
+                assertEquals("[mike gave 4.0 stars, and gave the following review goood foood, johne gave 1.0 stars, and gave the following review bad food]",malek.reviews.toString());
+                assertEquals("Restaurant{name='Malek', starsRate=2.0, priceCat=10}",malek.toString());
+
+
     }
 }
